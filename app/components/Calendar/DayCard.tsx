@@ -1,15 +1,15 @@
 import { useDroppable } from "@dnd-kit/core";
-import { Shift } from "@/app/types/types";
+import { Day, Shift } from "@/app/types/types";
 import ShiftCard from "./ShiftCard";
 
 interface DayCardProps {
-  day: string;
+  day: Day;
   shifts: Shift[];
 }
 
 export default function DayCard({ day, shifts }: DayCardProps) {
   const { setNodeRef } = useDroppable({
-    id: day,
+    id: day.title,
   });
 
   return (

@@ -6,6 +6,11 @@ export interface Employee {
   profilePhoto: string;
 }
 
+export interface Day {
+  title: string;
+  id: string;
+}
+
 export interface Shift {
   shiftId: string;
   userId: string;
