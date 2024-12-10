@@ -1,15 +1,31 @@
-import React from "react";
+import { Shift } from "@/app/types/types";
+import { useDraggable } from "@dnd-kit/core";
 
 interface ShiftCardProps {
-  time: string;
-  compensation: string;
+  shift: Shift;
 }
 
-export default function ShiftCard({ time, compensation }: ShiftCardProps) {
+export default function ShiftCard({ shift }: ShiftCardProps) {
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+    id: shift.shiftId,
+  });
+
+  const style = transform
+    ? {
+        transform: `translate(${transform.x}px, ${transform.y}px)`,
+      }
+    : undefined;
+
   return (
-    <div>
-      <p>{time}</p>
-      <p>{compensation}</p>
+    <div
+      ref={setNodeRef}
+      {...listeners}
+      {...attributes}
+      className="p-2 rounded-sm bg-yellow-200"
+      style={style}
+    >
+      <p>{shift.time}</p>
+      <p>{shift.compensation}</p>
     </div>
   );
 }
