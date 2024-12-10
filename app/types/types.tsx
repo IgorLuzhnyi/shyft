@@ -1,6 +1,7 @@
 export interface EMPLOYEE {
   firstName: string;
   lastName: string;
-  userId: string;
+  userId: number;
   role: string;
+  profilePhoto: string;
 }
