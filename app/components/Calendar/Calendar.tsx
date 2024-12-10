@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { DAYS } from "@/app/constants/days";
 import { EMPLOYEES } from "@/app/constants/employees";
 import { SHIFTS } from "@/app/constants/shifts";
@@ -10,6 +10,12 @@ import DayCard from "./DayCard";
 
 export default function Calendar() {
   const [shifts, setShifts] = useState(SHIFTS);
+
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleDragEng = (event: DragEndEvent) => {
     const { active, over } = event;
@@ -71,18 +77,21 @@ export default function Calendar() {
               </div>
             </div>
           </div>
-          <DndContext onDragEnd={handleDragEng}>
-            {DAYS.map((day) => (
-              <DayCard
-                key={day.id}
-                day={day}
-                shifts={shifts.filter(
-                  (shift) =>
-                    shift.userId === employee.userId && shift.day === day.title
-                )}
-              />
-            ))}
-          </DndContext>
+          {isClient && (
+            <DndContext onDragEnd={handleDragEng}>
+              {DAYS.map((day) => (
+                <DayCard
+                  key={day.id}
+                  day={day}
+                  shifts={shifts.filter(
+                    (shift) =>
+                      shift.userId === employee.userId &&
+                      shift.day === day.title
+                  )}
+                />
+              ))}
+            </DndContext>
+          )}
           <div className="border-t"></div>
         </Fragment>
       ))}
