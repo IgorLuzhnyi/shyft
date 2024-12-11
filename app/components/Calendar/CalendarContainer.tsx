@@ -7,9 +7,18 @@ import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { GoRocket } from "react-icons/go";
 import { ChartColumn } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function CalendarContainer() {
   const [buttonViewIndex, setButtonViewIndex] = useState<number>(2);
+
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
@@ -59,10 +68,40 @@ export default function CalendarContainer() {
         </div>
         <div className="flex gap-x-3 items-center">
           <ChartColumn className="text-gray-500" size={20} />
-          <Button className="flex shadow-none items-center text-black bg-gray-200 hover:bg-gray-300">
-            <p>Plus</p>
-            <IoMdArrowDropdown />
-          </Button>
+
+          <div className="relative inline-block">
+            <Button
+              onClick={() => setIsOpen(!isOpen)}
+              className="flex shadow-none items-center text-black bg-gray-200 hover:bg-gray-300"
+            >
+              <p>Plus</p>
+              <IoMdArrowDropdown />
+            </Button>
+
+            {isOpen && (
+              <div className="absolute left-0 mt-2 w-36 bg-white border border-gray-300 rounded-md">
+                <button
+                  className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100 rounded-t-md"
+                  onClick={() => {
+                    console.log("add new shift");
+                    setIsOpen(false);
+                  }}
+                >
+                  Option 1
+                </button>
+                <button
+                  className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100 rounded-b-md"
+                  onClick={() => {
+                    console.log("absence");
+                    setIsOpen(false);
+                  }}
+                >
+                  Option 2
+                </button>
+              </div>
+            )}
+          </div>
+
           <Button className="w-9 bg-[#5FCEFF] hover:bg-[#55B9E5]">
             <GoRocket strokeWidth={1.3} />
           </Button>
