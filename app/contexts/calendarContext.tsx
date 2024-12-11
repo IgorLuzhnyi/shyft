@@ -18,6 +18,7 @@ interface CalendarContextProps {
   employees: Employee[];
   shifts: Shift[];
   setShifts: (value: Shift[]) => void;
+  dayNumber: number;
 }
 
 const CalendarContext = createContext({} as CalendarContextProps);
@@ -46,6 +47,9 @@ export function CalendarContextProvider({
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [shifts, setShifts] = useState<Shift[]>([]);
 
+  const now = new Date();
+  const dayNumber = now.getDay();
+
   const fetchData = async () => {
     try {
       const fetchedEmployees = await getEmployees();
@@ -63,7 +67,9 @@ export function CalendarContextProvider({
   }, []);
 
   return (
-    <CalendarContext.Provider value={{ employees, shifts, setShifts }}>
+    <CalendarContext.Provider
+      value={{ employees, shifts, setShifts, dayNumber }}
+    >
       {children}
     </CalendarContext.Provider>
   );

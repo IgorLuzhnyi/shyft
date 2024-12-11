@@ -8,7 +8,7 @@ import { Shift } from "@/app/types/types";
 import DayCard from "./DayCard";
 
 export default function WeekCalendar() {
-  const { employees, shifts, setShifts } = useCalendarContext();
+  const { employees, shifts, setShifts, dayNumber } = useCalendarContext();
 
   const [isClient, setIsClient] = useState(false);
 
@@ -39,13 +39,17 @@ export default function WeekCalendar() {
 
   return (
     <div className={`grid grid-cols-9`}>
-      <div className="h-14 border-t border-r border-gray-200 flex justify-center items-center">
-        Resercher
+      <div className="h-14 p-3 border-t border-r border-gray-200 bg-[#F6F8FC] flex justify-center items-center">
+        <input
+          readOnly
+          value={"Rechercher"}
+          className="p-1 px-4 border bg-[#F6F8FC] outline-none text-sm text-gray-500 w-full"
+        />
       </div>
       {DAYS.map((day, i) => (
         <div
           key={day.id}
-          className={`h-14 border-t border-r border-gray-200 flex justify-center items-center font-bold`}
+          className={`h-14 border-t border-r border-gray-200 ${dayNumber === i + 1 ? "bg-[#E3E6F1]" : "bg-[#F8F9FF]"} ${i === DAYS.length - 1 && "rounded-tr-xl"} flex justify-center items-center font-bold`}
         >
           {`${day.title} 0${i + 2}`}
         </div>
