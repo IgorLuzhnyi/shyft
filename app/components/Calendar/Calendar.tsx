@@ -1,15 +1,14 @@
 "use client";
 
 import React, { useState, useEffect, Fragment } from "react";
+import { useCalendarContext } from "@/app/contexts/calendarContext";
 import { DAYS } from "@/app/constants/days";
-import { EMPLOYEES } from "@/app/constants/employees";
-import { SHIFTS } from "@/app/constants/shifts";
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import { Shift } from "@/app/types/types";
 import DayCard from "./DayCard";
 
 export default function Calendar() {
-  const [shifts, setShifts] = useState(SHIFTS);
+  const { employees, shifts, setShifts } = useCalendarContext();
 
   const [isClient, setIsClient] = useState(false);
 
@@ -25,16 +24,17 @@ export default function Calendar() {
     const shiftId = active.id as string;
     const newDay = over.id as Shift["day"];
 
-    setShifts(() =>
-      shifts.map((shift) =>
+    const updatedShifts = () =>
+      shifts.map((shift: Shift) =>
         shift.shiftId === shiftId
           ? {
               ...shift,
               day: newDay,
             }
           : shift
-      )
-    );
+      );
+
+    setShifts(updatedShifts());
   };
 
   return (
@@ -51,7 +51,7 @@ export default function Calendar() {
         </div>
       ))}
       <div></div>
-      {EMPLOYEES.map((employee) => (
+      {employees.map((employee) => (
         <Fragment key={employee.userId}>
           <div className="border-t border-r border-gray-200">
             <div
