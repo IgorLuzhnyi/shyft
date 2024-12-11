@@ -95,10 +95,15 @@ export default function WeekCalendar() {
             <IoInformationCircleSharp />
           </div>
         </div>
-        {CALCULATIONS.map((calc) => (
-          <div className="p-2 flex justify-center items-center bg-[#FED097] border-t border-r border-gray-200">
+        {CALCULATIONS.map((calc, i) => (
+          <div
+            key={i}
+            className="p-2 flex justify-center items-center bg-[#FED097] border-t border-r border-gray-200"
+          >
             <div className="flex gap-1 items-center">
-              <p className="p-1 bg-[#E76F59] text-white text-xs rounded-sm">
+              <p
+                className={`p-1 bg-[${calc.color}] text-white text-xs rounded-sm`}
+              >
                 {calc.hours}
               </p>
               <p className="p-1 bg-[#D7B37D] text-white text-xs rounded-sm">
