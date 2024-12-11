@@ -21,7 +21,7 @@ export default function ShiftCard({ shift }: ShiftCardProps) {
       ref={setNodeRef}
       {...listeners}
       {...attributes}
-      className="p-2 rounded-sm bg-yellow-200"
+      className="p-2 w-full rounded-sm bg-yellow-200"
       style={style}
     >
       <p>{shift.time}</p>

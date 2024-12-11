@@ -67,19 +67,17 @@
     },
     {
       "shiftId": "3",
-      "userId": "1",
-      "day": "Mar",
+      "userId": "6",
+      "day": "Sam",
       "time": "7:00 - 15:00",
       "compensation": "$600"
+    },
+    {
+      "shiftId": "4",
+      "userId": "6",
+      "day": "Sam",
+      "time": "9:00 - 18:00",
+      "compensation": "$600"
     }
-  ],
-  "days": [
-    { "title": "Lun", "id": "1" },
-    { "title": "Mar", "id": "2" },
-    { "title": "Mer", "id": "3" },
-    { "title": "Jeu", "id": "4" },
-    { "title": "Ven", "id": "5" },
-    { "title": "Sam", "id": "6" },
-    { "title": "Dim", "id": "7" }
   ]
 }

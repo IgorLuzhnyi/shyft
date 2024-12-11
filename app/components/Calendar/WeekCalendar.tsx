@@ -7,7 +7,7 @@ import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import { Shift } from "@/app/types/types";
 import DayCard from "./DayCard";
 
-export default function Calendar() {
+export default function WeekCalendar() {
   const { employees, shifts, setShifts } = useCalendarContext();
 
   const [isClient, setIsClient] = useState(false);
@@ -38,7 +38,7 @@ export default function Calendar() {
   };
 
   return (
-    <div className={`mt-6 grid grid-cols-9`}>
+    <div className={`grid grid-cols-9`}>
       <div className="h-14 border-t border-r border-gray-200 flex justify-center items-center">
         Resercher
       </div>

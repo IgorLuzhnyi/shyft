@@ -15,7 +15,7 @@ export default function DayCard({ day, shifts }: DayCardProps) {
   return (
     <div
       ref={setNodeRef}
-      className="py-2 border-t border-r flex justify-center items-center"
+      className="p-2 border-t border-r flex flex-col gap-y-2 justify-center items-center"
     >
       {shifts.map((shift) => (
         <ShiftCard key={shift.shiftId} shift={shift} />

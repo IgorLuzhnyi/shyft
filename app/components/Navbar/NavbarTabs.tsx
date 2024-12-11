@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button";
 import { FaCalendarAlt } from "react-icons/fa";
 import { RxLapTimer } from "react-icons/rx";
 import { FaRegUser } from "react-icons/fa";
-import { VscGraph } from "react-icons/vsc";
 import { IoDocumentTextSharp } from "react-icons/io5";
+import { ChartColumn } from "lucide-react";
 
 export default function NavbarTabs() {
   const [activeTab, setActiveTab] = useState<number>(0);
@@ -83,7 +83,7 @@ export default function NavbarTabs() {
             : "bg-white text-gray-900 hover:bg-green-600"
         } group`}
       >
-        <VscGraph
+        <ChartColumn
           className={
             activeTab === 3
               ? "text-white"
