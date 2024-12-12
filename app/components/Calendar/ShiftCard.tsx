@@ -24,8 +24,6 @@ export default function ShiftCard({ shift }: ShiftCardProps) {
       }
     : undefined;
 
-  console.log(`mt-[2px] p-1 w-full text-xs bg-[${shift.shiftType.bgColor}]`);
-
   return (
     <ContextMenu>
       <ContextMenuTrigger style={{ width: "100%" }}>
