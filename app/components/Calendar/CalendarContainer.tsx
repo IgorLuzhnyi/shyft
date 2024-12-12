@@ -3,6 +3,9 @@
 import React, { useState } from "react";
 import WeekCalendar from "./WeekCalendar";
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent } from "@/components/ui/sheet";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { DialogTitle, DialogDescription } from "@radix-ui/react-dialog";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { GoRocket } from "react-icons/go";
@@ -11,7 +14,9 @@ import { ChartColumn } from "lucide-react";
 export default function CalendarContainer() {
   const [buttonViewIndex, setButtonViewIndex] = useState<number>(2);
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOptionsOpen, setIsOptionsOpen] = useState(false);
+
+  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
 
   return (
     <div>
@@ -64,28 +69,30 @@ export default function CalendarContainer() {
 
           <div className="relative inline-block">
             <Button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => setIsOptionsOpen(!isOptionsOpen)}
               className="flex shadow-none items-center text-black bg-gray-200 hover:bg-gray-300"
             >
               <p>Plus</p>
               <IoMdArrowDropdown />
             </Button>
 
-            {isOpen && (
+            {isOptionsOpen && (
               <div className="absolute left-0 mt-2 w-36 bg-white border border-gray-300 rounded-md">
                 <button
                   className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100 rounded-t-md"
                   onClick={() => {
                     console.log("add new shift");
-                    setIsOpen(false);
+                    setIsOptionsOpen(false);
+                    setIsSideMenuOpen(true);
                   }}
                 >
                   Créer un changement
                 </button>
+
                 <button
                   className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100 rounded-b-md"
                   onClick={() => {
-                    setIsOpen(false);
+                    setIsOptionsOpen(false);
                   }}
                 >
                   Créer une absence
@@ -103,6 +110,21 @@ export default function CalendarContainer() {
         </div>
       </div>
       <WeekCalendar />
+
+      <Sheet open={isSideMenuOpen} onOpenChange={setIsSideMenuOpen}>
+        <SheetContent className="">
+          <VisuallyHidden>
+            <DialogTitle>Formulaire de disponibilité</DialogTitle>
+            <DialogDescription>
+              Ici, vous pouvez ajouter un nouveau quart de travail ou une
+              nouvelle absence
+            </DialogDescription>
+          </VisuallyHidden>
+
+          <div>content</div>
+          <button onClick={() => setIsSideMenuOpen(false)}>Close</button>
+        </SheetContent>
+      </Sheet>
     </div>
   );
 }
