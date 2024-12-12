@@ -44,3 +44,22 @@ export const CALCULATIONS = [
     color: "#D7B37D",
   },
 ];
+
+export const SHIFT_TYPES = [
+  {
+    title: "Caisse",
+    bgColor: "#8cc44d",
+  },
+  {
+    title: "Fermeture",
+    bgColor: "#e72061",
+  },
+  {
+    title: "Camion",
+    bgColor: "#1e97f5",
+  },
+  {
+    title: "Ouverture",
+    bgColor: "#ff9901",
+  },
+];

@@ -3,13 +3,11 @@
 import React, { useState } from "react";
 import WeekCalendar from "./WeekCalendar";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent } from "@/components/ui/sheet";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { DialogTitle, DialogDescription } from "@radix-ui/react-dialog";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { GoRocket } from "react-icons/go";
 import { ChartColumn } from "lucide-react";
+import SideForm from "./SideForm";
 
 export default function CalendarContainer() {
   const [buttonViewIndex, setButtonViewIndex] = useState<number>(2);
@@ -110,21 +108,7 @@ export default function CalendarContainer() {
         </div>
       </div>
       <WeekCalendar />
-
-      <Sheet open={isSideMenuOpen} onOpenChange={setIsSideMenuOpen}>
-        <SheetContent className="">
-          <VisuallyHidden>
-            <DialogTitle>Formulaire de disponibilité</DialogTitle>
-            <DialogDescription>
-              Ici, vous pouvez ajouter un nouveau quart de travail ou une
-              nouvelle absence
-            </DialogDescription>
-          </VisuallyHidden>
-
-          <div>content</div>
-          <button onClick={() => setIsSideMenuOpen(false)}>Close</button>
-        </SheetContent>
-      </Sheet>
+      <SideForm open={isSideMenuOpen} setIsSideMenuOpen={setIsSideMenuOpen} />
     </div>
   );
 }

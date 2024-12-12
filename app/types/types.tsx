@@ -11,10 +11,18 @@ export interface Day {
   id: string;
 }
 
+interface ShiftType {
+  title: string;
+  bgColor: string;
+}
+
 export interface Shift {
   shiftId: string;
   userId: string;
   day: string;
   time: string;
-  compensation: string;
+  shiftType: ShiftType;
+  paidHours: string;
+  unpaidHours: string;
+  rate: string;
 }
