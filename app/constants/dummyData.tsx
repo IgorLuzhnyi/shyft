@@ -35,12 +35,12 @@ export const CALCULATIONS = [
     hours: "44h",
     rate: "515€",
     occupation: "4",
-    color: "#D7B286",
+    color: "#D7B37D",
   },
   {
     hours: "36h30",
     rate: "540€",
     occupation: "3",
-    color: "#D7B286",
+    color: "#D7B37D",
   },
 ];

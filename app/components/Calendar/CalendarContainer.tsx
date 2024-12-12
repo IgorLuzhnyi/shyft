@@ -7,13 +7,6 @@ import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { GoRocket } from "react-icons/go";
 import { ChartColumn } from "lucide-react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
 export default function CalendarContainer() {
   const [buttonViewIndex, setButtonViewIndex] = useState<number>(2);
@@ -87,16 +80,15 @@ export default function CalendarContainer() {
                     setIsOpen(false);
                   }}
                 >
-                  Option 1
+                  Créer un changement
                 </button>
                 <button
                   className="block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100 rounded-b-md"
                   onClick={() => {
-                    console.log("absence");
                     setIsOpen(false);
                   }}
                 >
-                  Option 2
+                  Créer une absence
                 </button>
               </div>
             )}

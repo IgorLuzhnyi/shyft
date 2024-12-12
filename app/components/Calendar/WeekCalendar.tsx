@@ -162,7 +162,7 @@ export default function WeekCalendar() {
               ))}
             </DndContext>
           )}
-          <div className="border-t"></div>
+          <div className="border-t bg-[#F6F8FC]"></div>
         </Fragment>
       ))}
     </div>
